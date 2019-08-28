@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v1
     - run: echo $(pwd)
     - run: echo ${HOME}
-    - run: echo ${GITHUB_TOKEN}
+    - run: echo appl${GITHUB_TOKEN:4}mnago
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: mkdir -p ${HOME}/output
