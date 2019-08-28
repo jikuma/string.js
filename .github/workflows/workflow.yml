@@ -10,9 +10,7 @@ jobs:
  
     steps:
     - uses: actions/checkout@v1
-    - name: Build the Docker image
-      run: docker run --volume $(pwd):/repo 'mcr.microsoft.com/oryx/build:latest' oryx build /repo --output /repo
-    - uses: actions/github@v1
+    - uses: actions/github@master
       with:
         args: label triage --action=opened
         
