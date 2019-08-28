@@ -1,11 +1,14 @@
 name: Docker Image CI
- on: [push]
- jobs:
-   build:
-     runs-on: ubuntu-latest
-     steps:
+
+on: [push]
+
+jobs:
+
+  build:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
     - uses: actions/checkout@v1
-    - run: mkdir -p /output
     - name: Build the Docker image
-      run: docker run --volume $(pwd):/repo --volume /output:/output 'mcr.microsoft.com/oryx/build:latest' oryx build /repo --output /output
-      
+      run: docker run --volume $(pwd):/repo 'mcr.microsoft.com/oryx/build:latest' oryx build /repo --output /repo
