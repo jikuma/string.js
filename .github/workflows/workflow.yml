@@ -1,19 +1,20 @@
 name: Docker Image CI
 
-on: [push]
+ on: [push]
 
-jobs:
+ jobs:
 
-  build:
- 
-    runs-on: ubuntu-latest
- 
-    steps:
+   build:
+
+     runs-on: ubuntu-latest
+
+     steps:
     - uses: actions/checkout@v1
-    - uses: actions/github@master
+    - run: mkdir -p /output
+    - name: Build the Docker image
+      run: docker run --volume $(pwd):/repo --volume /output:/output 'mcr.microsoft.com/oryx/build:latest' oryx build /repo --output /output
+    - uses: actions/upload-artifact@master
       with:
-        args: label triage --action=opened
-      env:
-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        
-        
+        name: my-artifact
+        path: /output
+      
