@@ -12,9 +12,10 @@ jobs:
     - uses: actions/checkout@v1
     - run: ls
     - run: ls $(pwd)
+    - run: mkdir -p /home/runner/outputfolder
     - name: Build the Docker image
-      run: docker run --volume $(pwd):/repo --volume /home/runner:/output 'mcr.microsoft.com/oryx/build:latest' oryx build /repo --output /output
+      run: docker run --volume $(pwd):/repo --volume /home/runner/outputfolder:/output 'mcr.microsoft.com/oryx/build:latest' oryx build /repo --output /output
     - uses: actions/upload-artifact@master
       with:
         name: my-artifact
-        path: /home/runner
+        path: /home/runner/outputfolder
