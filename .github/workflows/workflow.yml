@@ -8,8 +8,4 @@ name: Docker Image CI
     - run: mkdir -p /output
     - name: Build the Docker image
       run: docker run --volume $(pwd):/repo --volume /output:/output 'mcr.microsoft.com/oryx/build:latest' oryx build /repo --output /output
-    - uses: actions/upload-artifact@master
-      with:
-        name: my-artifact
-        path: /output
       
