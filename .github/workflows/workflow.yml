@@ -10,15 +10,11 @@ jobs:
  
     steps:
     - uses: actions/checkout@v1
-    - run: echo $(pwd)
-    - run: echo ${HOME}
-    - run: echo appl${GITHUB_TOKEN:4}mnago
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - run: mkdir -p ${HOME}/output
+    - run: ls
+    - run: ls $(pwd)
     - name: Build the Docker image
-      run: docker run --volume $(pwd):/repo --volume ${HOME}/output:/output 'mcr.microsoft.com/oryx/build:latest' oryx build /repo --output /output
+      run: docker run --volume $(pwd):/repo --volume /home/runner:/output 'mcr.microsoft.com/oryx/build:latest' oryx build /repo --output /output
     - uses: actions/upload-artifact@master
       with:
         name: my-artifact
-        path: ${HOME}/output
+        path: /home/runner
