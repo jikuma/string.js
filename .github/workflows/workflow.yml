@@ -10,6 +10,11 @@ jobs:
  
     steps:
     - uses: actions/checkout@v1
+    - run: echo $(pwd)
+    - run: echo ${HOME}
+    - run: echo ${GITHUB_TOKEN}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: mkdir -p ${HOME}/output
     - name: Build the Docker image
       run: docker run --volume $(pwd):/repo --volume ${HOME}/output:/output 'mcr.microsoft.com/oryx/build:latest' oryx build /repo --output /output
