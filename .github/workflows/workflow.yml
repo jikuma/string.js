@@ -12,11 +12,11 @@ jobs:
     - uses: actions/checkout@v1
     - run: ls
     - run: mkdir -p /home/runner/outputfolder
-    - uses: jikuma/githubaction@v3-release
+    - uses: jikuma/githubaction@v0.3.0-alpha
       with:
         operation: 'create a release'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        release_title: 'Release from Test1'
-        release_note: 'its a release node1'
+        release_title: 'Release from Test2'
+        release_note: 'its a release node2'
         asset_filepath: './CHANGELOG.md'
-        tag_name: 'Test1'
+        tag_name: 'Test2'
