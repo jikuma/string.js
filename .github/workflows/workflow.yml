@@ -20,4 +20,4 @@ jobs:
         release_title: 'Release from ${{ env.GITHUB_SHA }}'
         release_note: 'its a release node'
         asset_filepath: './CHANGELOG.md'
-        tag_name: ${{ env.GITHUB_SHA }}
+        tag_name: ${GITHUB_SHA}
