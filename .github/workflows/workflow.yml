@@ -17,7 +17,7 @@ jobs:
       with:
         operation: 'create a release'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        release_title: 'Release from Test'
-        release_note: 'its a release node'
+        release_title: 'Release from Test1'
+        release_note: 'its a release node1'
         asset_filepath: './CHANGELOG.md'
-        tag_name: 'Test'
+        tag_name: 'Test1'
