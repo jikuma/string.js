@@ -13,7 +13,7 @@ jobs:
     - run: ls
     - run: ls $(pwd)
     - run: mkdir -p /home/runner/outputfolder
-    - uses: jikuma/githubaction@v1-release
+    - uses: jikuma/githubaction@v3-release
       with:
         operation: 'create a release'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
