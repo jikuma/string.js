@@ -13,10 +13,7 @@ jobs:
     - run: ls
     - run: ls $(pwd)
     - run: mkdir -p /home/runner/outputfolder
-    - name: Build the Docker image
-      run: docker run --volume $(pwd):/repo --volume /home/runner/outputfolder:/output 'mcr.microsoft.com/oryx/build:latest' oryx build /repo --output /output
-    - run: ls /home/runner/outputfolder
-    - uses: actions/upload-artifact@master
+    - uses: jikuma/githubaction@createrelease
       with:
-        name: my-artifact
-        path: /home/runner/outputfolder
+        operation: 'create a release'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
