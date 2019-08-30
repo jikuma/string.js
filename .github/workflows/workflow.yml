@@ -13,6 +13,8 @@ jobs:
     - run: ls
     - run: mkdir -p /home/runner/outputfolder
     - uses: jikuma/githubaction@v6-release
+      env:
+        ACTIONS_RUNNER_DEBUG: 'true'
       with:
         operation: 'create a release'
         repo-token: ${{ secrets.GITHUB_TOKEN }}
@@ -20,3 +22,4 @@ jobs:
         release_note: 'its a release node'
         asset_filepath: './CHANGELOG.md'
         tag_name: v0.1.GITHUB_SHORT_SHA
+       
