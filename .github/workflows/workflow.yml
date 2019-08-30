@@ -19,4 +19,4 @@ jobs:
         release_title: 'Release from Test2'
         release_note: 'its a release node2'
         asset_filepath: './CHANGELOG.md'
-        tag_name: ${{ process.env.GITHUB_SHA }}
+        tag_name: ${{ GITHUB_SHA }}
