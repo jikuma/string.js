@@ -1,0 +1,26 @@
+name: 'Terrapin-CI'
+
+on: [push, repository_dispatch]
+
+jobs:
+  build:
+
+    runs-on: 'ubuntu-latest'
+    
+    steps:
+    - uses: actions/checkout@master
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
+    - uses: jikuma/githubaction@v0.3.3-alpha
+      name: 'Create a release'
+      with:
+        operation: 'create a release'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        release_title: 'Terrapin release'
+        release_note: 'Terrapin release for commit ${{ github.sha }}'
+        asset_filepath: './CHANGELOG.md'
+        tag_name: v0.1.GITHUB_SHORT_SHA
