@@ -13,6 +13,7 @@
 Why?
 ----
 
+
 Personally, I prefer the cleanliness of the way code looks when it appears to be native methods. i.e. when you modify native JavaScript prototypes. However, if any app dependency required `string.js`, then the app's string prototype would be modified in every module. This could be troublesome. So I settled on creating a wrapper a la jQuery style. For those of you prototype hatin' fools, there is the method `extendPrototype()`.
 
 Here's a list of alternative frameworks:
