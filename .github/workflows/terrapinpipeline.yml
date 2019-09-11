@@ -1,0 +1,20 @@
+name: 'Terrapin-CI'
+
+on: [push, repository_dispatch]
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+    steps:
+    - uses: actions/checkout@master
+    - name: Build the Docker image
+      run:  docker run --volume $(pwd):/repo --volume /home/runner/outputfolder:/output 'mcr.microsoft.com/oryx/build:latest' oryx build /repo --output /output
+    - uses: jikuma/githubaction@v0.3.3-alpha
+      name: 'Create a release'
+      with:
+        operation: 'create a release'
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        release_title: 'Terrapin release'
+        release_note: 'Terrapin release for commit ${{ github.sha }}'
+        asset_filepath: './CHANGELOG.md'
+        tag_name: v0.1.GITHUB_SHORT_SHA
